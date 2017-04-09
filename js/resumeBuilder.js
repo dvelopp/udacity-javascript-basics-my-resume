@@ -1,91 +1,103 @@
 var bio = {
     "name": "Dmitry Pashkov",
-    "role": "Java Developer",
-    "contactInfo": {
+    "role": "Software Engineer",
+    "contacts": {
         "generic": "Ukraine, Kiev",
-        "mobile": "My Mobile",
-        "email": "My Email",
-        "twitter": "My twitter",
-        "github": "My github",
-        "blog": "My blog",
-        "location": "My location"
+        "mobile": "099*******",
+        "email": "dvelopp@gmail.com",
+        "twitter": "https://twitter.com/dvelopp",
+        "github": "https://github.com/dvelopp",
+        "blog": "No blog info",
+        "location": "Ukraine, Kiev"
     },
-    "skills": ["Java", "JavaScript", "HTMl"],
-    "biopic": "images/me.jpg",
-    "welcomeMessage": "My welcome message",
-    display: function () {
-        $("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
-        $("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
-        $("#topContacts").append(HTMLcontactGeneric.replace("%contact%", "Generic data").replace("%data%", bio.contactInfo.generic));
-        $("#topContacts").append(HTMLmobile.replace("%data%", bio.contactInfo.mobile));
-        $("#topContacts").append(HTMLemail.replace("%data%", bio.contactInfo.email));
-        $("#topContacts").append(HTMLtwitter.replace("%data%", bio.contactInfo.twitter));
-        $("#topContacts").append(HTMLgithub.replace("%data%", bio.contactInfo.github));
-        $("#topContacts").append(HTMLblog.replace("%data%", bio.contactInfo.blog));
-        $("#topContacts").append(HTMLlocation.replace("%data%", bio.contactInfo.location));
-        $("#header").append(HTMLbioPic.replace("%data%", bio.biopic));
-        if (bio.skills.length > 0) {
-            $("#header").append(HTMLskillsStart);
-            for (var i = 0; i < bio.skills.length; i++) {
-                $("#header").append(HTMLskills.replace("%data%", bio.skills[i]));
+    "skills": ["Java", "Spring(MVC, Security, Testing, AOP)", "Hibernate", "JUnit", "Mockito", "Struts", "Tapestry", "JSP",
+        "JSTL", "Servlets", "SQL(MySQL, PostgreSQL, Oracle)", "Liquibase", "VCS(Mercurial)", "REST"],
+    "biopic": "https://avatars3.githubusercontent.com/u/14136075?v=3&s=460",
+    "welcomeMessage": "Software Engineer",
+    "display": function () {
+        var headerElement = $("#header");
+        var topContactElement = $("#topContacts");
+        headerElement.prepend(HTMLheaderRole.replace("%data%", this.role));
+        headerElement.prepend(HTMLheaderName.replace("%data%", this.name));
+        topContactElement.append(HTMLcontactGeneric.replace("%contact%", "Generic data")
+            .replace("%data%", this.contacts.generic));
+        topContactElement.append(HTMLmobile.replace("%data%", this.contacts.mobile));
+        topContactElement.append(HTMLemail.replace("%data%", this.contacts.email));
+        topContactElement.append(HTMLtwitter.replace("%data%", this.contacts.twitter));
+        topContactElement.append(HTMLgithub.replace("%data%", this.contacts.github));
+        topContactElement.append(HTMLblog.replace("%data%", this.contacts.blog));
+        topContactElement.append(HTMLlocation.replace("%data%", this.contacts.location));
+        headerElement.append(HTMLbioPic.replace("%data%", this.biopic));
+        if (this.skills.length > 0) {
+            headerElement.append(HTMLskillsStart);
+            for (var i = 0; i < this.skills.length; i++) {
+                headerElement.append(HTMLskills.replace("%data%", this.skills[i]));
             }
         }
-        $("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
+        headerElement.append(HTMLwelcomeMsg.replace("%data%", this.welcomeMessage));
     }
 };
 
 var work = {
-    "jobs": [{
-        "employer": "Ciklum",
-        "title": "Java Developer",
-        "dates": "2012-2016",
-        "location": "Ukraine, Odessa",
-        "description": "Developing a Spring Based project"
-    }, {
-        "employer": "Luxoft",
-        "title": "Java Developer",
-        "dates": "2016-2017",
-        "location": "Ukraine, Kiev",
-        "description": "Developing a Spring Based project"
-    }],
-    "display": function () {
-        if (work.jobs.length === 0) {
-            return;
-        }
-        for (var jobIndex in work.jobs) {
-            var job = work.jobs[jobIndex];
-            $("#workExperience").append(HTMLworkStart);
-            $(".work-entry:last").append(HTMLworkEmployer.replace("%data%", job.employer));
-            $(".work-entry:last").append(HTMLworkTitle.replace("%data%", job.title));
-            $(".work-entry:last").append(HTMLworkLocation.replace("%data%", job.location));
-            $(".work-entry:last").append(HTMLworkDates.replace("%data%", job.dates));
-            $(".work-entry:last").append(HTMLworkDescription.replace("%data%", job.description));
+        "jobs": [
+            {
+                "employer": "Ciklum",
+                "title": "Java Developer",
+                "dates": "JUL 2012 - MAY 2016",
+                "location": "Odessa",
+                "description": "Ciklum is an international custom software development and IT outsourcing company headquartered in Kyiv," +
+                "Ukraine.The company has software development centers and branch offices in the UK, Switzerland, Denmark," +
+                "Ukraine, Belarus and Pakistan."
+            },
+            {
+                "employer": "Luxoft",
+                "title": "Java Developer",
+                "dates": "JUN 2016 - PRESENT",
+                "location": "Kiev",
+                "description": "The iTravel API provides a simple and cost-effective alternative to the conventional " +
+                "development of airline customer applications using SITA’s Reservation Web Services (SRWS)." +
+                "iTravel is a component of Horizon, the next generation passenger services system for airlines that" +
+                "enables travelers to book, pay, check-in and utilize their frequent flyer accounts by using their mobile devices."
+            }
+        ],
+        "display": function () {
+            for (var i = 0; i < this.jobs.length; i++) {
+                $("#workExperience").append(HTMLworkStart);
+                $(".work-entry:last").append(HTMLworkEmployer.replace("%data%", work.jobs[i].employer));
+                $(".work-entry:last").append(HTMLworkTitle.replace("%data%", work.jobs[i].title));
+                $(".work-entry:last").append(HTMLworkLocation.replace("%data%", work.jobs[i].location));
+                $(".work-entry:last").append(HTMLworkDates.replace("%data%", work.jobs[i].dates));
+                $(".work-entry:last").append(HTMLworkDescription.replace("%data%", work.jobs[i].description));
+            }
         }
     }
-};
+;
 
 var projects = {
     "projects": [{
-        "title": "My project title",
-        "dates": "My project dates",
-        "description": "My project description",
-        "image": "images/197x148.gif"
+        "title": "TeamOnline",
+        "dates": "JUL 2012 - MAY 2016",
+        "description": "Ciklum is an international custom software development and IT outsourcing company headquartered in Kyiv," +
+        "Ukraine.The company has software development centers and branch offices in the UK, Switzerland, Denmark," +
+        "Ukraine, Belarus and Pakistan.",
+        "image": "http://en.welfaretech.dk/media/4052/eg-team-online-medlemslogo.jpg"
     }, {
-        "title": "My project title 2",
-        "dates": "My project dates 2",
-        "description": "My project description 2",
-        "image": "images/197x148.gif"
+        "title": "Sita",
+        "dates": "JUN 2016 - PRESENT",
+        "description": "The iTravel API provides a simple and cost-effective alternative to the conventional " +
+        "development of airline customer applications using SITA’s Reservation Web Services (SRWS)." +
+        "iTravel is a component of Horizon, the next generation passenger services system for airlines that" +
+        "enables travelers to book, pay, check-in and utilize their frequent flyer accounts by using their mobile devices.",
+        "image": "https://www.nfcworld.com/wp-content/uploads/2012/02/sita.png"
     }],
     "display": function () {
-        if (projects.projects.length === 0) {
-            return;
-        }
-        for (var i = 0; i < projects.projects.length; i++) {
-            $("#projects").append(HTMLprojectStart);
-            $("#projects").append(HTMLprojectTitle.replace("%data%", projects.projects[i].title));
-            $("#projects").append(HTMLprojectDates.replace("%data%", projects.projects[i].dates));
-            $("#projects").append(HTMLprojectDescription.replace("%data%", projects.projects[i].description));
-            $("#projects").append(HTMLprojectImage.replace("%data%", projects.projects[i].image));
+        var projectsElement = $("#projects");
+        for (var i = 0; i < this.projects.length; i++) {
+            projectsElement.append(HTMLprojectStart);
+            projectsElement.append(HTMLprojectTitle.replace("%data%", this.projects[i].title));
+            projectsElement.append(HTMLprojectDates.replace("%data%", this.projects[i].dates));
+            projectsElement.append(HTMLprojectDescription.replace("%data%", this.projects[i].description));
+            projectsElement.append(HTMLprojectImage.replace("%data%", this.projects[i].image));
         }
     }
 };
@@ -93,62 +105,59 @@ var projects = {
 var education = {
     schools: [
         {
-            "name": "school1",
-            "degree": "degree1",
-            "dates": "2000-2010",
-            "location": "location1",
-            "major": "major1",
+            "name": "Classic Private University",
+            "degree": "Master's degree",
+            "dates": "2010 - 2015",
+            "location": "Zaporozhye",
+            "major": "Software development",
         },
         {
-            "name": "school2",
-            "degree": "degree2",
-            "dates": "2011-2014",
-            "location": "location2",
-            "major": "major2",
+            "name": "Classic Private University",
+            "degree": "Specialist",
+            "dates": "2007 - 2010",
+            "location": "Zaporozhye",
+            "major": "Software development",
         }
     ],
     onlineCourses: [
         {
-            "title": "Online course title",
-            "school": "Online course school",
-            "dates": "Online course dates",
-            "url": "Online course url"
+            "title": "duolingo",
+            "school": "https://www.duolingo.com/",
+            "dates": "2016",
+            "url": "https://www.duolingo.com/"
+        },
+        {
+            "title": "Shaping Up With AngularJS",
+            "school": "CodeSchool",
+            "dates": "2016",
+            "url": "https://www.codeschool.com/courses/shaping-up-with-angularjs"
         }
     ],
-    display: function () {
-        if (education.schools.length !== 0) {
-            for (var i = 0; i < education.schools.length; i++) {
-                $("#education").append(HTMLschoolStart);
-                $("#education").append(HTMLschoolName.replace("%data%", education.schools[i].name));
-                $("#education").append(HTMLschoolDegree.replace("%data%", education.schools[i].degree));
-                $("#education").append(HTMLschoolDates.replace("%data%", education.schools[i].dates));
-                $("#education").append(HTMLschoolLocation.replace("%data%", education.schools[i].location));
-                $("#education").append(HTMLschoolMajor.replace("%data%", education.schools[i].major));
-            }
+    "display": function () {
+        var educationElement = $("#education");
+        for (var i = 0; i < this.schools.length; i++) {
+            educationElement.append(HTMLschoolStart);
+            educationElement.append(HTMLschoolName.replace("%data%", this.schools[i].name));
+            educationElement.append(HTMLschoolDegree.replace("%data%", this.schools[i].degree));
+            educationElement.append(HTMLschoolDates.replace("%data%", this.schools[i].dates));
+            educationElement.append(HTMLschoolLocation.replace("%data%", this.schools[i].location));
+            educationElement.append(HTMLschoolMajor.replace("%data%", this.schools[i].major));
         }
-        if (education.onlineCourses.length !== 0) {
-            for (var i = 0; i < education.onlineCourses.length; i++) {
-                $("#education").append(HTMLonlineClasses);
-                $("#education").append(HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title));
-                $("#education").append(HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school));
-                $("#education").append(HTMLonlineDates.replace("%data%", education.onlineCourses[i].dates));
-                $("#education").append(HTMLonlineURL.replace("%data%", education.onlineCourses[i].url));
-            }
+        educationElement.append(HTMLonlineClasses);
+        for (var i = 0; i < this.onlineCourses.length; i++) {
+            educationElement.append(HTMLonlineTitle.replace("%data%", this.onlineCourses[i].title));
+            educationElement.append(HTMLonlineSchool.replace("%data%", this.onlineCourses[i].school));
+            educationElement.append(HTMLonlineDates.replace("%data%", this.onlineCourses[i].dates));
+            educationElement.append(HTMLonlineURL.replace("%data%", this.onlineCourses[i].url));
         }
     }
 };
-
+$("#mapDiv").append(googleMap);
 bio.display();
 work.display();
 education.display();
 projects.display();
 
-function locationizer(work_obj) {
-    var locations = [];
-    for (var i = 0; i < work_obj.jobs.length; i++) {
-        locations.push(work_obj.jobs[i].location);
-    }
-    return locations;
-}
-
-console.log(locationizer(work));
+$(document).ready(function () {
+    initializeMap();
+});
