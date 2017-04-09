@@ -143,12 +143,14 @@ var education = {
             educationElement.append(HTMLschoolLocation.replace("%data%", this.schools[i].location));
             educationElement.append(HTMLschoolMajor.replace("%data%", this.schools[i].major));
         }
-        educationElement.append(HTMLonlineClasses);
-        for (var i = 0; i < this.onlineCourses.length; i++) {
-            educationElement.append(HTMLonlineTitle.replace("%data%", this.onlineCourses[i].title));
-            educationElement.append(HTMLonlineSchool.replace("%data%", this.onlineCourses[i].school));
-            educationElement.append(HTMLonlineDates.replace("%data%", this.onlineCourses[i].dates));
-            educationElement.append(HTMLonlineURL.replace("%data%", this.onlineCourses[i].url));
+        if (this.onlineCourses.length > 0) {
+            educationElement.append(HTMLonlineClasses);
+            for (var i = 0; i < this.onlineCourses.length; i++) {
+                educationElement.append(HTMLonlineTitle.replace("%data%", this.onlineCourses[i].title));
+                educationElement.append(HTMLonlineSchool.replace("%data%", this.onlineCourses[i].school));
+                educationElement.append(HTMLonlineDates.replace("%data%", this.onlineCourses[i].dates));
+                educationElement.append(HTMLonlineURL.replace("%data%", this.onlineCourses[i].url));
+            }
         }
     }
 };
