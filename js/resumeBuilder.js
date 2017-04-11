@@ -63,11 +63,12 @@ var work = {
         "display": function () {
             for (var i = 0; i < this.jobs.length; i++) {
                 $("#workExperience").append(HTMLworkStart);
-                $(".work-entry:last").append(HTMLworkEmployer.replace("%data%", work.jobs[i].employer));
-                $(".work-entry:last").append(HTMLworkTitle.replace("%data%", work.jobs[i].title));
-                $(".work-entry:last").append(HTMLworkLocation.replace("%data%", work.jobs[i].location));
-                $(".work-entry:last").append(HTMLworkDates.replace("%data%", work.jobs[i].dates));
-                $(".work-entry:last").append(HTMLworkDescription.replace("%data%", work.jobs[i].description));
+                var workEntryLastSelector = ".work-entry:last";
+                $(workEntryLastSelector).append(HTMLworkEmployer.replace("%data%", work.jobs[i].employer));
+                $(workEntryLastSelector).append(HTMLworkTitle.replace("%data%", work.jobs[i].title));
+                $(workEntryLastSelector).append(HTMLworkLocation.replace("%data%", work.jobs[i].location));
+                $(workEntryLastSelector).append(HTMLworkDates.replace("%data%", work.jobs[i].dates));
+                $(workEntryLastSelector).append(HTMLworkDescription.replace("%data%", work.jobs[i].description));
             }
         }
     }
@@ -154,6 +155,7 @@ var education = {
         }
     }
 };
+
 $("#mapDiv").append(googleMap);
 bio.display();
 work.display();
