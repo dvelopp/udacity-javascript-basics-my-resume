@@ -147,10 +147,11 @@ var education = {
         if (this.onlineCourses.length > 0) {
             educationElement.append(HTMLonlineClasses);
             for (var i = 0; i < this.onlineCourses.length; i++) {
-                educationElement.append(HTMLonlineTitle.replace("%data%", this.onlineCourses[i].title));
-                educationElement.append(HTMLonlineSchool.replace("%data%", this.onlineCourses[i].school));
-                educationElement.append(HTMLonlineDates.replace("%data%", this.onlineCourses[i].dates));
-                educationElement.append(HTMLonlineURL.replace("%data%", this.onlineCourses[i].url));
+                var currentOnlineCourse = this.onlineCourses[i];
+                educationElement.append(HTMLonlineTitle.replace("%data%", currentOnlineCourse.title));
+                educationElement.append(HTMLonlineSchool.replace("%data%", currentOnlineCourse.school));
+                educationElement.append(HTMLonlineDates.replace("%data%", currentOnlineCourse.dates));
+                educationElement.append(HTMLonlineURL.replace("%data%", currentOnlineCourse.url));
             }
         }
     }
