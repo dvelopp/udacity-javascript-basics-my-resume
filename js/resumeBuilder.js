@@ -71,8 +71,7 @@ var work = {
                 $(workEntryLastSelector).append(HTMLworkDescription.replace("%data%", work.jobs[i].description));
             }
         }
-    }
-;
+    };
 
 var projects = {
     "projects": [{
